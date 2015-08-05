@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string inptVal = Console.ReadLine();
+        long jars = Convert.ToInt64(inptVal.Split(' ')[0]);
+        long oper = Convert.ToInt64(inptVal.Split(' ')[1]);
+        //Get The Average
+        double average = 0.0;
+        while(oper > 0){
+            string[] vals = Console.ReadLine().Split(' ');
+            long strtIndx = Convert.ToInt64(vals[0]);
+            long endIndx = Convert.ToInt64(vals[1]);
+            long addVal = Convert.ToInt64(vals[2]);
+            average = average + ((Math.Abs(strtIndx-endIndx)+1) * addVal);
+            oper--;
+        }
+        Console.WriteLine(Math.Floor(average/jars));
+    }
+}

@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        string values= Console.ReadLine();
+        
+        int N = Convert.ToInt32(values.Split(' ')[0]);
+        int M = Convert.ToInt32(values.Split(' ')[1]);
+        
+        string[] A = Console.ReadLine().Split(' ');
+        string[] B = Console.ReadLine().Split(' ');
+        
+        if(N == 0 || M == 0){
+            Console.WriteLine(0);
+        }
+        
+        int[,] table = new int[N+1,M+1];
+        
+        for(int i=0; i< N+1; i++){
+            for(int j=0; j< M+1 ; j++){
+                 table[i,j] = 0;
+            }
+        }
+        
+        //Get Longest Common Subsequence
+        
+        for(int i=0; i< N+1; i++){
+            for(int j=0; j< M+1 ; j++){
+                 if(i == 0 || j == 0){
+                     table[i,j] = 0;
+                 }
+                 else{
+                     if(A[i-1] == B[j-1]){
+                         table[i,j] = table[i-1,j-1] + 1;
+                     }
+                     else{
+                         table[i,j] = max(table[i,j-1], table[i-1,j]);
+                     }
+                }
+             }
+        }
+        
+        int lcsLength = table[N,M];
+        //Printing Longest Common Subsequence
+        string[] lcs = new string[lcsLength + 1];
+        
+        int a = N; int b = M;
+        
+        while( a > 0 && b > 0){
+            if(A[a-1] == B[b-1]){
+                lcs[lcsLength-1] = A[a-1];
+                a--; b--;lcsLength--;
+            }
+            else if(table[a-1,b] > table[a,b-1]){
+                a--;
+            }else{
+                b--;
+            }
+        }
+        
+        //Print the Longest Common Subsequence
+        for(int i=0; i< table[N,M]; i++){
+            Console.Write(lcs[i] + " ");
+        }
+    }
+    
+    static int max(int a, int b){
+        return (a>b) ? a : b;
+    }
+}

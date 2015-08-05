@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int N = Integer.parseInt(scan.nextLine());
+        
+        String[][] matrx = new String[N][N];
+        
+        //Construct Matrix
+        for(int i=0; i< N; i++){
+            matrx[i] = scan.nextLine().split(" ");
+        }
+        
+        int leftDiagonal = 0; int rightDiagonal = 0;
+        
+        //Calculate left diagonal sum
+        int colu = 0;
+        for(int i=0; i< N; i++){
+            leftDiagonal = leftDiagonal + Integer.parseInt(matrx[i][colu]);
+            colu++;
+        }
+        
+        //Calculate right diagonal sum
+        colu = N-1;
+        for(int i=0; i<N; i++){
+            rightDiagonal = rightDiagonal + Integer.parseInt(matrx[i][colu]);
+            colu--;
+        }
+        
+        int sum = leftDiagonal - rightDiagonal;
+        System.out.print((sum < 0) ? -sum : sum);
+    }
+}

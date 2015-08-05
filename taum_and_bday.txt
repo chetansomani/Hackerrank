@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        
+        int N = Integer.parseInt(scan.nextLine());
+        String[] values; long B = 0; long W = 0; long X =0; long Y= 0; long Z = 0;
+        long price = 0;
+        for(int i=0; i< N; i++){
+            values = scan.nextLine().split(" ");
+            B = Integer.parseInt(values[0]);
+            W = Integer.parseInt(values[1]);
+            values = scan.nextLine().split(" ");
+            X = Integer.parseInt(values[0]);
+            Y = Integer.parseInt(values[1]);
+            Z = Integer.parseInt(values[2]);
+            
+            price = min((B*X+W*Y),min(((B*(Y+Z)) + W*Y),(B*X + (W*(X+Z)))));
+            
+            System.out.println(price);
+        }
+    }
+    
+    static long min(long a, long b){
+        return (a<b) ? a : b;
+    }
+    
+}

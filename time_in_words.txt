@@ -1,0 +1,116 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int hrs = Integer.parseInt(scan.nextLine());
+        int min = Integer.parseInt(scan.nextLine());
+        
+        if(min == 0){
+            System.out.println(getTextForNumber(hrs) +" o' clock");
+        }
+        
+        if(min >= 1 && min <= 14){
+            System.out.println(getTextForNumber(min) + " minutes past " + getTextForNumber(hrs));
+        }
+        
+        if(min == 15){
+            System.out.println("quarter past " + getTextForNumber(hrs));
+        }
+        
+         if(min >= 16 && min <= 29){
+            System.out.println(getTextForNumber(min) + " minutes past " + getTextForNumber(hrs));
+        }
+        
+        if(min == 30){
+            System.out.println("half past " + getTextForNumber(hrs));
+        }
+        
+        if(min == 45){
+            hrs = hrs + 1;
+            System.out.println("quarter to " + getTextForNumber(hrs));
+        }
+        
+        if((min > 30 && min <= 44) || (min >= 46 && min <= 60) ){
+            min = 60 - min;
+            if(hrs == 12){
+                hrs = 1;
+            }else{
+                hrs = hrs + 1;
+            }
+            System.out.println(getTextForNumber(min) + " minutes to " + getTextForNumber(hrs));
+        }
+    }
+    
+    static String getTextForNumber(int n){
+        String res = "";
+        switch(n){
+            case 1: res = "one";
+                    break;
+            case 2: res = "two";
+                    break;
+            case 3: res = "three";
+                    break;
+            case 4: res = "four";
+                    break;
+            case 5: res = "five";
+                    break;
+            case 6: res = "six";
+                    break;
+            case 7: res = "seven";
+                    break;
+            case 8: res = "eight";
+                    break;
+            case 9: res = "nine";
+                    break;
+            case 10: res = "ten";
+                    break;
+            case 11: res = "eleven";
+                    break;
+            case 12: res = "twelve";
+                    break;
+            case 13: res = "thirteen";
+                    break;
+            case 14: res = "fourteen";
+                    break;
+            case 15: res = "fifteen";
+                    break;
+            case 16: res = "sixteen";
+                    break;
+            case 17: res = "seventeen";
+                    break;
+            case 18: res = "eighteen";
+                    break;
+            case 19: res = "nineteen";
+                    break;
+            case 20: res = "twenty";
+                    break;
+            case 21: res = "twenty one";
+                    break;
+            case 22: res = "twenty two";
+                    break;
+            case 23: res = "twenty three";
+                    break;
+             case 24: res = "twenty four";
+                    break;
+            case 25: res = "twenty five";
+                    break;
+            case 26: res = "twenty six";
+                    break;
+             case 27: res = "twenty seven";
+                    break;
+            case 28: res = "twenty eight";
+                    break;
+            default: res = "twenty nine";
+                    break;
+        }
+        
+        return res;
+    }
+}

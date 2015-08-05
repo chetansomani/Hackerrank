@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        /*The problem is to find the minimum value in the subset of the array and print the value*/
+        string val = Console.ReadLine();
+        int tCase = Convert.ToInt32(val.Split(' ')[1]);
+        string[] arrVal = Console.ReadLine().Split(' ');
+        while(tCase > 0){
+            string indxVal = Console.ReadLine();
+            int lftIndx = Convert.ToInt32(indxVal.Split(' ')[0]);
+            int rytIndx = Convert.ToInt32(indxVal.Split(' ')[1]);
+            int min = int.MaxValue;
+            for(int i=lftIndx; i<= rytIndx; i++){
+                if(Convert.ToInt32(arrVal[i]) < min){
+                    min = Convert.ToInt32(arrVal[i]);
+                }
+            }
+            Console.WriteLine(min);
+            tCase--;
+        }
+    }
+}

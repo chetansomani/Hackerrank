@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+class Solution {
+    static void Main(String[] args) {
+          int val = Convert.ToInt32(Console.ReadLine());
+            int[] countVal = new int[26];
+            for (int i = 1; i <= val; i++)
+            {
+                string s = Console.ReadLine();
+                int[] chkPtr = new int[26];
+                for (int j = 0; j < s.Length; j++)
+                {
+                    if (countVal[s[j] - 'a'] == i || chkPtr[s[j] - 'a'] == 1)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        countVal[s[j] - 'a']++;
+                        chkPtr[s[j] - 'a'] = 1;
+                    }
+                }
+            }
+            int count = 0;
+            for (int Kl = 0; Kl < 26; Kl++)
+            {
+                if (Math.Abs(countVal[Kl]) == val)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine(count);
+    }
+}

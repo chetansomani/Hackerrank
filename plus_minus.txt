@@ -1,0 +1,39 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int N = Integer.parseInt(scan.nextLine());
+        
+        String[] arr = new String[N];
+        arr = scan.nextLine().split(" ");
+        
+        int positive = 0; int negative = 0; int zero = 0;
+        
+        for(int i=0; i< N; i++){
+            if(Integer.parseInt(arr[i]) < 0){
+                negative++;
+            }
+            
+            if(Integer.parseInt(arr[i]) > 0){
+                positive++;
+            }
+            
+            if(Integer.parseInt(arr[i]) == 0){
+                zero++;
+            }
+        }
+        
+        DecimalFormat _numberFormat= new DecimalFormat("#0.000");
+        System.out.println(_numberFormat.format((float)positive/N));
+        System.out.println(_numberFormat.format((float)negative/N));
+        System.out.println(_numberFormat.format((float)zero/N));
+        
+    }
+}

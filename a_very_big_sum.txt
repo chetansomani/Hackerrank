@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    static long addTwoNumbers(long x, long y){
+        if(y == 0){
+            return x;
+        }else{
+            return addTwoNumbers(x^y, (x&y) << 1);
+        }
+    }
+    
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int N = Integer.parseInt(scan.nextLine());
+        
+        String[] values = new String[N];
+        values = scan.nextLine().split(" ");
+        
+        long answer = Long.parseLong(values[0]);
+        
+        for(int i=1; i<N; i++){
+            answer = addTwoNumbers(answer, Long.parseLong(values[i]));
+        }
+        
+        System.out.print(answer);
+    }
+}

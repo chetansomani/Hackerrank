@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Numerics;
+class Solution {
+    static void Main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
+        int N = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine(getFact(N));
+    }
+    
+    static BigInteger getFact(int N){
+        if(N == 1){
+            return 1;
+        }else{
+            return N * getFact(N-1);
+        }
+    }
+}
